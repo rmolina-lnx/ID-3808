@@ -10,9 +10,7 @@ CREATE OR REPLACE PACKAGE pk_er_otras_obligaciones IS
    +----------------------------------------------------------------------+
   */ 
 
-   PROCEDURE pr_mostrar_otras_obligaciones(v_k_idterc    NUMBER,
-                                           n_funcionario VARCHAR2,
-                                           n_x_json     OUT CLOB,
-                                           f_f_corte     DATE DEFAULT SYSDATE);
+   PROCEDURE pr_consulta_otras_obligaciones(n_numnit  ap014mcliente.aanumnit%type,
+                                            n_x_json  OUT CLOB);
 END pk_er_otras_obligaciones;
 /

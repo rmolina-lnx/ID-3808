@@ -10,18 +10,17 @@ CREATE OR REPLACE PACKAGE BODY pk_er_otras_obligaciones IS
    +----------------------------------------------------------------------+
   */ 
 
-   PROCEDURE pr_mostrar_otras_obligaciones(v_k_idterc    NUMBER,
-                                           n_funcionario VARCHAR2,
-                                           n_x_json     OUT CLOB,
-                                           f_f_corte     DATE DEFAULT SYSDATE)IS
-      n_x_xml                     CLOB;
-      n_aux                       CLOB;
-      t_registro                  pk_gr_constante.ty_t_cv_numero_varchar;
-      t_conversion                pk_er_json.ty_t_conversion;
-      t_atributo_valor            pk_gr_constante.ty_t_clave_valor;
-      t_matriz_numero_clave_valor pk_gr_constante.ty_t_matriz_numero_clave_valor;
-      c_loop_2                    BINARY_INTEGER;
-      c_loop                      BINARY_INTEGER;
+   PROCEDURE pr_consulta_otras_obligaciones(n_numnit  ap014mcliente.aanumnit%type,
+                                            n_x_json  OUT CLOB)IS
+      n_x_xml                       CLOB;
+      n_aux                         CLOB;
+      t_registro                    pk_gr_constante.ty_t_cv_numero_varchar;
+      t_conversion                  pk_er_json.ty_t_conversion;
+      t_atributo_valor              pk_gr_constante.ty_t_clave_valor;
+      t_matriz_numero_clave_valor   pk_gr_constante.ty_t_matriz_numero_clave_valor;
+      c_loop_2                      BINARY_INTEGER;
+      c_loop                        BINARY_INTEGER;
+      r_ap014                       ap014mcliente%ROWTYPE;
             
       PROCEDURE pr_llena_conversion IS
       BEGIN
@@ -39,8 +38,8 @@ CREATE OR REPLACE PACKAGE BODY pk_er_otras_obligaciones IS
       END pr_llena_conversion;
 
    BEGIN -- Pirncipal
-
-      pk_we_consulta.pr_mostrar_otras_obligaciones(v_k_idterc,n_funcionario,n_x_xml);
+      pk_ap_ap014.pr_buscar_ap014_regis_aanumnit(n_numnit,r_ap014);
+      pk_we_consulta.pr_mostrar_otras_obligaciones(r_ap014.k_idterc,'TRUE',n_x_xml);
       n_aux   := XMLTYPE (n_x_xml).EXTRACT('consulta_otras_obligaciones/otras_obligaciones/registro' ).getClobVal(); 
       t_registro:= pk_er_json.fu_split(n_aux,'<registro>');
                   
@@ -60,7 +59,7 @@ CREATE OR REPLACE PACKAGE BODY pk_er_otras_obligaciones IS
    EXCEPTION WHEN OTHERS THEN
       pk_gr_control_error.pr_control_error (dbms_utility.format_error_backtrace()||' '||SQLERRM, SQLCODE,'CONSULTA',SQLERRM,'CF');
       RAISE_APPLICATION_ERROR( -20000,dbms_utility.format_error_backtrace()||' '||SQLERRM);
-   END pr_mostrar_otras_obligaciones;
+   END pr_consulta_otras_obligaciones;
    
 END pk_er_otras_obligaciones;
 /
