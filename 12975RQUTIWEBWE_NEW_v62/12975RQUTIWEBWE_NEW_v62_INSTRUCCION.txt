@@ -1,0 +1,27 @@
+DESCRIPCION: 
+ 
+CREACIÓN DEL NUEVO SERVICIO DE DATOS PARA LINAPI OTRAS OBLIGACIONES DEL ASOCIADO
+ 
+INSTRUCCIONES DE INSTALACION: 
+ 
+1.  INGRESAR POR SQL/PLUS Y EJECUTAR 
+   
+        directorio\instruccion.sql;
+
+   %%%%% NOTA: La palabra directorio reemplácela por el path completo del 
+               directorio de su disco duro, en el cual quedaron copiados 
+               todos los archivos de ésta actualización. 
+
+   Ejemplo: Si el directorio se llama c:\copia, la instrucción que se ejecute
+            en SQL/PLUS debe quedar de la siguiente manera: 
+
+   start c:\copia\instruccion.sql;
+
+   La palabra instrucción reemplácela por el archivo punto sql del directorio del disco
+  duro, en el cual quedaron copiados todos los archivos de ésta actualización.
+
+  start c:\directorio\
+  12975RQUTIWEBWE_NEW_v62.SQL
+ 
+ 
+  LEER EL ARCHIVO DE INSTRUCCIONES ADJUNTO : 12975RQUTIWEBWE_NEW_v62.HTM

@@ -28,13 +28,13 @@ CREATE OR REPLACE PACKAGE BODY pk_er_otras_obligaciones IS
          t_conversion.DELETE;
          t_conversion('k_tipodr').n_valor        := 'CODIGO_TIPO_DOCUMENTO';    
          t_conversion('k_numdoc').n_valor        := 'NUMERO_DOCUMENTO';    
-         t_conversion('n_tipodr').n_valor        := 'TIPO_DOCUMENTO';
+         t_conversion('n_tipodr').n_valor        := 'NOMBRE_TIPO_DOCUMENTO';
          t_conversion('f_docref').n_valor        := 'FECHA_DOCUMENTO';
          t_conversion('v_saldo_favor').n_valor   := 'VALOR_SALDO_FAVOR';
          t_conversion('v_saldo_cargo').n_valor   := 'VALOR_SALDO_CARGO'; 
-         t_conversion('i_tipodr').n_valor        := 'TIPO_DOUMENTO_SOPORTE';
-         t_conversion('i_tipodoc').n_valor       := 'IDENTIFICADOR_TIPO_DOUMENTO';
-         
+         t_conversion('i_tipodr').n_valor        := 'TIPO_DOCUMENTO_SOPORTE';
+         t_conversion('i_tipodoc').n_valor       := 'IDENTIFICADOR_TIPO_DOCUMENTO';
+         t_conversion('k_numpla').n_valor        := 'NUMERO_TARJETA';
       END pr_llena_conversion;
 
    BEGIN -- Pirncipal
